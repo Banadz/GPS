@@ -1,0 +1,213 @@
+<?php
+
+ob_start();
+
+// Hasitiana add portal
+// Changement de titre de resultat
+$this->load->library('session');
+$cand_type = $this->session->userdata('portal');
+function month($numberMonth){
+    switch ($numberMonth) {
+        case 1:
+            return "Janvier";
+            break;
+        case 2:
+            return "Fevrier";
+            break;
+        case 3:
+            return "Mars";
+            break;
+        case 4:
+            return "Avril";
+            break;
+        case 5:
+            return "Mai";
+            break;
+        case 6:
+            return "Juin";
+            break;
+        case 7:
+            return "Juillet";
+            break;
+        case 8:
+            return "Aout";
+            break;
+        case 9:
+            return "Septembre";
+            break;
+        case 10:
+            return "Octobre";
+            break;
+        case 11:
+            return "Novembre";
+            break;
+        case 12:
+            return "Decembre";
+            break;
+    }
+    
+}
+function transformAnnee($niv_libelle){
+    switch ($niv_libelle) {
+        case 'L1':
+            return "Premier Année de Licence";
+            break;
+        case 'L2':
+            return "Deuxième Année de Licence";
+            break;
+        case 'L3':
+            return "Troisième Année de Licence";
+            break;
+        case 'M1':
+            return "Premiere Année de Master";
+            break;
+        case 'M2':
+            return "Deuxième Année de Master";
+            break;
+        default:
+            return $niv_libelle;
+            break;
+    }
+}
+?>
+<page>
+    <html>
+
+    <head>
+        <title>Résultat concours</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    </head>
+
+    <body>
+
+        <table style="border:1px;border-style: solid">
+            <tr style="padding-bottom: 200px;">
+                <td width="230" height="150" style="text-align: center; ">
+                    <img src="<?php echo base_url() ?>assets/images/emit.jpg" alt="logo" width=150 height=100>
+                    <span style="font-size: 10pt ;  font-weight: bold">UNIVERSITE DE FIANARANTSOA<br></span>
+                </td>
+                <td width="150" height="auto"><span class=""></span></td>
+                <td width="350" style="text-align: center; ">
+                    ECOLE DE MANAGEMENT ET D'INNOVATION TECHNOLOGIQUE<br>
+                    EMIT
+                    <br>
+                    <span style="text-decoration: underline;">TEL:</span> 75.915 93 -
+                    <span style="text-decoration: underline;">BP :</span> 1135<br>
+                    <!-- H -->
+                    Email : renseignement@emit.mg <br>
+                    Site web : www.emit.mg<br>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <br>
+
+       <table style="margin-top: 50px;" width="900" border="0" cellspacing="0" cellpadding="1" align="left"  >
+            <tr>
+                <td>
+                    ANNEE UNIVERSITAIRE: <?=$anne_univ?>
+                </td>
+            </tr>
+            <tr height="30">
+                <td>
+                N°<span class="tab" style="display: inline-block;margin-left: 40px;"></span> <?=date('Y')?>/<?= $cert_id?>/UF/EMIT/SCO/CERT/<?=$parc_nom?>
+                </td>
+            </tr>
+            <tr>
+                <td width="900" height="100" style="text-align: center; font-size: 24px;font-weight: bold">
+                <span class="tab" style="display: inline-block;margin-left: 160px;"></span>
+					CERTIFICAT DE SCOLARITE
+
+                </td>
+            </tr>
+            
+            <tr>
+                <td style="font-size:14px;">
+				<span class="tab" style="display: inline-block;margin-left: 40px;"></span>
+                Je, soussigné, Dr RAKOTONIRAINY Hasina Lalaina, Directeur de l’EMIT, certifie que <br> Mr/Mlle/Mme. <?=strtoupper($etud_nom).' '.$etud_prenom?> 
+                </td>
+            </tr>
+        </table>
+        <table style="margin-top: 30px;font-size:14px;">
+            <tr height="30">
+                <td>
+                Né(e) le : <?=substr($etud_date_naiss, 8).' '.month(substr($etud_date_naiss, 5,2)).' '.substr($etud_date_naiss, 0,4)?> à <?=$etud_lieu_naiss?>
+                </td>
+            </tr>
+            <tr height="30">
+                <td>
+                Fils / Fille de :  <?=$etud_nom_pere?>
+                </td>
+            </tr>  
+            <tr height="30">
+                <td>
+                Et de : <?=$etud_nom_mere?>
+                </td>
+            </tr>
+            <tr height="70" style="margin-top: 30px;">
+                <td>
+                Domicilié à <?=$etud_adresse?>
+                </td>
+            </tr> 
+        </table>
+        <table style="margin-top: 20px;">
+        <tr height="90" style="margin-top: 20px;font-size:14px;">
+            <td>
+			<span class="tab" style="display: inline-block;margin-left: 40px;"></span>
+            Est régulièrement inscrit(e) comme étudiant(e)  dans mon établissement durant l’année Universitaire <?=$anne_univ?> en <?=transformAnnee($niv_libelle)?> dans la mention  <?=$anne_univ?> en <?=$parc_libelle?>
+            </td>
+        </tr>
+        <tr height="60" style="font-size:14px;">
+            <td >
+            En foi de quoi, le présent certificat lui est délivré pour servir et valoir ce que de droit.
+            </td>
+        </tr> 
+       </table>
+        <table width="600" border="0" cellspacing="0" cellpadding="1" align="left"  style="margin-top: 50px;">
+            <tr>
+                <td width="300" height="auto"><span style="font-size: 12px;">                  
+                    N.B : Il ne peut être délivré qu’un certificat par année                    
+                    Universitaire. Il vous appartiendra d’en faire autant de                       
+                    copies qui vous seront nécessaires les faire certifier                        
+                    conforme à l’original par les autorités compétentes.                       
+                </span></td>
+                <td width='750'>
+                </td>
+            </tr>
+        </table>
+        <table width="730" style="margin-top: 30px;">
+            <tr>
+                <td width="400"><span class=""> </span></td>
+                <td width="300"><span class="">
+                <p style="margin-top: 10px;">
+                    Fianarantsoa, le ……………..       
+                </p>
+                <p style="margin-top: 10px;">
+                Pour le Directeur et par Délégation 
+                </p>
+                <p style="margin-top: 10px;">
+                Le Secrétaire principal                 
+                </p>
+                <p style="margin-top: 30px;">
+                VEROTIANA Sella  Naida              
+                </p>
+                
+
+                </span></td>
+            </tr>
+        </table>
+
+    </body>
+
+    </html>
+</page>
+<?php
+
+$content = ob_get_clean();
+
+require('html2pdf/html2pdf.class.php');
+$pdf = new HTML2PDF('P','A4','fr', true, 'ISO-8859-15');
+$pdf->writeHTML($content);
+$pdf->Output('CertificatScolarite.pdf');
+?>
